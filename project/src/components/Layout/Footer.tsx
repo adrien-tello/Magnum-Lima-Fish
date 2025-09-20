@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="LOGO">
-                <img src="https://github.com/adrien-tello/Magnum-Lima-Fish/blob/master/project/src/logo/MOCK1.png?raw=true" alt="logo" width={50} height={50} />
+                <img src="https://raw.githubusercontent.com/adrien-tello/Magnum-Lima-Fish/main/project/src/logo/MOCK1.png" alt="Magnum-Lima Fish logo" width={50} height={50} />
               </div>
               <span className="text-xl font-bold">MAGNUM-LIMA FISH</span>
             </div>

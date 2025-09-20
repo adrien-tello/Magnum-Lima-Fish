@@ -50,7 +50,7 @@ const Header: React.FC = () => {
           <Link to="/" className="flex items-center space-x-2">
             <div className="LOGO">
               <span>
-                <img src="https://github.com/adrien-tello/Magnum-Lima-Fish/blob/master/project/src/logo/MOCK1.png?raw=true" alt="logo" width={90} height={90} />
+                <img src="https://raw.githubusercontent.com/adrien-tello/Magnum-Lima-Fish/main/project/src/logo/MOCK1.png" alt="Magnum-Lima Fish logo" width={90} height={90} />
               </span>
             </div>
             <span className={`text-xl font-bold transition-colors ${
