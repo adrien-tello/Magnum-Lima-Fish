@@ -41,7 +41,7 @@ const Delivery: React.FC = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-green-600 via-green-500 to-blue-500 text-white py-20">
+      <section className="bg-gradient-to-r from-brand-primary via-brand-primary to-brand-secondary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center">

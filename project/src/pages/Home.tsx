@@ -5,6 +5,7 @@ import { ArrowRight, Play, CheckCircle, Users, Globe, Award, TrendingUp } from '
 import ScrollReveal from '../components/Animation/ScrollReveal';
 import { products } from '../data/mockData';
 import { formatUSDToXAF } from '../utils/currency';
+import ProductInfoModal from '../components/ProductInfo/ProductInfoModal';
 
 const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -96,6 +97,9 @@ const Home: React.FC = () => {
       description: "Recognized for innovation and sustainability in agricultural biotechnology"
     }
   ];
+
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [infoTab, setInfoTab] = useState<'volaille' | 'aquaculture' | 'ruminants' | 'porcs' | 'transversaux'>('aquaculture');
 
   return (
     <div className="min-h-screen">
@@ -279,15 +283,23 @@ const Home: React.FC = () => {
                         <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
                           {formatUSDToXAF(product.price)}
                         </span>
-                        <Link to={`/products/${product.id}`}>
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-6 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-full font-medium hover:shadow-lg transition-shadow"
-                          >
-                            Learn More
-                          </motion.button>
-                        </Link>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            const mapping: Record<string, 'volaille' | 'aquaculture' | 'ruminants' | 'porcs' | 'transversaux'> = {
+                              'Fish Feed': 'aquaculture',
+                              'Dog Food': 'porcs',
+                              'Groundnut Meal': 'transversaux',
+                              'Soybean Meal': 'transversaux',
+                            };
+                            setInfoTab(mapping[product.category] ?? 'aquaculture');
+                            setInfoOpen(true);
+                          }}
+                          className="px-6 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-full font-medium hover:shadow-lg transition-shadow"
+                        >
+                          Learn More
+                        </motion.button>
                       </div>
                     </div>
                   </motion.div>
@@ -350,8 +362,9 @@ const Home: React.FC = () => {
           </div>
         </section>
       </ScrollReveal>
-    </div>
+    <ProductInfoModal open={infoOpen} onClose={() => setInfoOpen(false)} defaultTab={infoTab} />
+      </div>
   );
 };
-
+ 
 export default Home;

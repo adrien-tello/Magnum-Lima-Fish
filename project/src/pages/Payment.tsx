@@ -200,7 +200,7 @@ const Payment: React.FC = () => {
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { id: 'card', label: 'Credit Card', icon: CreditCard },
-                  { id: 'mtnMoney', label: 'MOMO', icon: Lock },
+                  { id: 'MtnMoney', label: 'MOMO', icon: Lock },
                   { id: 'orange', label: 'Orange Money', icon: Shield }
                 ].map(({ id, label, icon: Icon }) => (
                   <button

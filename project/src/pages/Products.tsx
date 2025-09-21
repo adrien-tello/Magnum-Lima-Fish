@@ -6,6 +6,7 @@ import ScrollReveal from '../components/Animation/ScrollReveal';
 import { products as mockProducts } from '../data/mockData';
 import { fetchProducts } from '../services/products';
 import { formatUSDToXAF } from '../utils/currency';
+import ProductInfoModal from '../components/ProductInfo/ProductInfoModal';
 
 interface Product {
   id: string;
@@ -88,6 +89,9 @@ const Products: React.FC = () => {
       </div>
     );
   }
+
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [infoTab, setInfoTab] = useState<'volaille' | 'aquaculture' | 'ruminants' | 'porcs' | 'transversaux'>('aquaculture');
 
   return (
     <div className="min-h-screen pt-16">
@@ -219,15 +223,23 @@ const Products: React.FC = () => {
                           {formatUSDToXAF(product.price)}
                         </span>
                         <div className="flex space-x-2">
-                          <Link to={`/products/${product.description}`}>
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
-                            >
-                              View Details
-                            </motion.button>
-                          </Link>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              const mapping: Record<string, 'volaille' | 'aquaculture' | 'ruminants' | 'porcs' | 'transversaux'> = {
+                                'Fish Feed': 'aquaculture',
+                                'Dog Food': 'porcs',
+                                'Groundnut Meal': 'transversaux',
+                                'Soybean Meal': 'transversaux',
+                              };
+                              setInfoTab(mapping[product.category] ?? 'aquaculture');
+                              setInfoOpen(true);
+                            }}
+                            className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                          >
+                            View Details
+                          </motion.button>
                           <Link to={`/payment?product=${product.id}`}>
                             <motion.button
                               whileHover={{ scale: 1.05 }}
@@ -271,8 +283,9 @@ const Products: React.FC = () => {
           </div>
         </section>
       </ScrollReveal>
-    </div>
+    <ProductInfoModal open={infoOpen} onClose={() => setInfoOpen(false)} defaultTab={infoTab} />
+      </div>
   );
 };
-
+ 
 export default Products;

@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { ChatMessage } from '../../types';
 
 const STORAGE_KEY = 'mlf_chat_v2_restricted';
+const LOGO_URL = 'https://raw.githubusercontent.com/adrien-tello/Magnum-Lima-Fish/main/project/src/logo/MOCK1.png';
 
 function nowId() {
   return Date.now().toString();
@@ -178,7 +179,7 @@ const ChatBot: React.FC = () => {
             <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-3 rounded-t-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                <Bot className="w-5 h-5" />
+                  <img src={LOGO_URL} alt="Magnum-Lima Fish logo" className="w-5 h-5 rounded" />
                   <span className="font-medium">Magnum Assistant</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -207,7 +208,6 @@ const ChatBot: React.FC = () => {
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-start">
                   <div className="flex items-start space-x-2">
                     <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white">
-                      <Bot className="w-4 h-4" />
                     </div>
                     <div className="bg-gray-100 px-3 py-2 rounded-lg">
                       <div className="flex space-x-1">
