@@ -67,7 +67,7 @@ const Products: React.FC = () => {
     return products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            product.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = !selectedCategory || selectedCategory === 'All' || product.category === selectedCategory;
+      const matchesCategory = !selectedCategory || product.category === selectedCategory;
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
       
       return matchesSearch && matchesCategory && matchesPrice;

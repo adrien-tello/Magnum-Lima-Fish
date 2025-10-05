@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Wrench, Sprout, Fish, Dog, Droplets, ShieldCheck, ArrowRight, Phone, MessageSquare, ChevronDown, CheckCircle2 } from 'lucide-react';
 import ScrollReveal from '../components/Animation/ScrollReveal';
 import { products } from '../data/mockData';
+import { formatUSDToXAF } from '../utils/currency';
 
 const problemAreas = [
   {
@@ -199,7 +200,7 @@ const Solutions: React.FC = () => {
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900">{prod.name}</div>
                         <div className="text-sm text-gray-600">{prod.category}</div>
-                        <div className="text-sm font-semibold text-green-600">${prod.price}</div>
+                        <div className="text-sm font-semibold text-green-600">{formatUSDToXAF(prod.price)}</div>
                       </div>
                       <Link to={`/payment?product=${prod.id}`}>
                         <motion.button

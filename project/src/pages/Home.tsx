@@ -333,7 +333,7 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to Transform Your Virsion?
+                Ready to Transform Your Vision?
               </h2>
               <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
                 Join thousands of farmers worldwide who trust our biotechnology solutions to achieve sustainable, profitable farming.

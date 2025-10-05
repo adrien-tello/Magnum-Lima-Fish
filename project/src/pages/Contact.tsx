@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,6 +15,7 @@ const contactSchema = yup.object({
 });
 
 const Contact: React.FC = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,8 +28,11 @@ const Contact: React.FC = () => {
   const onSubmit = async (data: ContactForm) => {
     // Simulate form submission
     console.log('Form submitted:', data);
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    reset();
+    setIsSubmitted(true);
+    setTimeout(() => {
+      reset();
+      setIsSubmitted(false);
+    }, 5000); // Reset form after 5 seconds
   };
 
   const contactInfo = [
