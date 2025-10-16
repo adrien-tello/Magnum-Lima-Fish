@@ -5,8 +5,7 @@
 //      or export GOOGLE_APPLICATION_CREDENTIALS=... (macOS/Linux)
 //   3) Run: npm run seed:firestore
 
-import { initializeApp, applicationDefault, cert, getApps } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import * as admin from 'firebase-admin';
 
 const credsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 if (!credsPath) {
@@ -14,13 +13,13 @@ if (!credsPath) {
   process.exit(1);
 }
 
-if (!getApps().length) {
-  initializeApp({
-    credential: applicationDefault(),
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.applicationDefault(),
   });
 }
 
-const db = getFirestore();
+const db = admin.firestore();
 
 const products = [
   {
