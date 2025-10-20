@@ -8,7 +8,8 @@
     "dev": "vite",
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist",
-    "build": "npx vite build",
+  "build": "node ./node_modules/vite/bin/vite.js build",
+  "build:npx": "npx vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "seed:firestore": "ts-node scripts/seed-firestore.ts"
