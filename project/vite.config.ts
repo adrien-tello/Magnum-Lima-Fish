@@ -7,5 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base:process.env.VITE_BASE_PAT||"/Magnum-Lima-Fish"
+  base: '/Magnum-Lima-Fish/'
 });
